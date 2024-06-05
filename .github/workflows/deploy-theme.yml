@@ -21,7 +21,7 @@ jobs:
       # This is a custom step with the name 'Deploy Ghost Theme'.
       - name: Deploy Ghost Theme
         # This step uses the 'TryGhost/action-deploy-theme@v1' action to deploy your Ghost theme.
-        uses: TryGhost/action-deploy-theme@v1
+        uses: TryGhost/action-deploy-theme@v1.2.0
         # 'with' is used to pass input parameters to the action.
         with:
           # This is the URL of your Ghost Admin API, stored as a secret in your repository.
