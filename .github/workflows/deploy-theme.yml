@@ -1,0 +1,30 @@
+# This is the name of your GitHub Action
+name: Deploy Theme
+
+# This specifies when the action should be triggered. In this case, it's triggered on a push event.
+on:
+  # The push event is further specified to only occur on the 'WISHUP-Modifications' branch.
+  push:
+    branches:
+      - WISHUP-Modifications
+
+# Jobs are a set of steps that execute on the same runner. You can define dependencies between jobs in the same workflow.
+jobs:
+  # This is the ID of the job. You can name it anything you like.
+  deploy:
+    # This specifies the type of runner that the job will run on. In this case, it's an Ubuntu 22.04 machine.
+    runs-on: ubuntu-22.04
+    # Steps are a sequence of tasks that will be executed as part of the job.
+    steps:
+      # This step uses the 'actions/checkout@v3' action to checkout your repository's code.
+      - uses: actions/checkout@v3
+      # This is a custom step with the name 'Deploy Ghost Theme'.
+      - name: Deploy Ghost Theme
+        # This step uses the 'TryGhost/action-deploy-theme@v1' action to deploy your Ghost theme.
+        uses: TryGhost/action-deploy-theme@v1
+        # 'with' is used to pass input parameters to the action.
+        with:
+          # This is the URL of your Ghost Admin API, stored as a secret in your repository.
+          api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
+          # This is your Ghost Admin API key, also stored as a secret in your repository.
+          api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
