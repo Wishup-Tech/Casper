@@ -1,4 +1,4 @@
-# change log 2.0.
+# change log 3.0.
 
 1. updated_at will be shown by default in posts
 
